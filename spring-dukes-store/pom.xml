@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>my.home</groupId>
+  <groupId>javaeetutorial</groupId>
   <artifactId>spring-dukes-store</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -44,6 +44,28 @@
 		</plugins>
 	</build>
 	<dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spring-dukes-events</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spring-dukes-entities</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spring-dukes-payment</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spring-dukes-resources</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+	
 		<!-- Spring -->
 		<dependency>
             <groupId>org.springframework</groupId>
