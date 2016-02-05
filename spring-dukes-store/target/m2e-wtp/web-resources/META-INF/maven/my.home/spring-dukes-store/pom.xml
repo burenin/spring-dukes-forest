@@ -5,6 +5,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
+  
+  
   	<properties>
 		<spring.version>4.2.3.RELEASE</spring.version>
 		<spring-data-jpa.version>1.9.2.RELEASE</spring-data-jpa.version>
@@ -196,4 +198,9 @@
 		</dependency>
         
 	</dependencies>
+	<parent>
+		<groupId>javaeetutorial</groupId>
+		<artifactId>spring-dukes-forest</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 </project>
