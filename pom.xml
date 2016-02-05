@@ -6,5 +6,10 @@
   <packaging>pom</packaging>
   <modules>
   	<module>spring-dukes-store</module>
+  	<module>spring-dukes-payment</module>
+  	<module>spring-dukes-resources</module>
+  	<module>spring-dukes-shipment</module>
+  	<module>spring-dukes-entities</module>
+  	<module>spring-dukes-events</module>
   </modules>
 </project>
