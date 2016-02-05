@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      lang="en"
+      layout:decorator="layouts/template">
+
+<head>
+    <title th:text="#{CreateCustomerTitle}">Prototype Customer Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link href="../../../resources/css/default.css"
+          th:href="@{/css/default.css}" rel="stylesheet" />
+          
+    <link rel="shortcut icon" type="image/x-icon" href="../../../resources/img/logo-small.ico"
+    	th:href="@{/img/logo-small.ico}"/>
+</head>
+<body>
+	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
+	<div layout:fragment="body">
+		<!--/* Show general error task when form contains errors */-->
+	    <th:block th:if="${#fields.hasErrors('${customer.*}')}">
+	        <div th:replace="fragments/alert :: alert (type='danger', message='Form contains errors. Please try again.')">Alert</div>
+	    </th:block>
+		<form id="signup" method="post" th:action="@{/customer/new}" th:object="${customer}" class="form-narrow form-horizontal">
+			<table>
+		        <tbody>
+		        	<tr>
+			        	<td><label for="firstname" th:text="#{CreateCustomerLabel_firstname}">Prototype Customer firtname</label></td>
+						<td>
+							<input id="firstname" type="text" required="required" th:field="*{firstname}" th:title="#{CreateCustomerTitle_firstname}"/>
+							<span class="help-block" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Incorrect firstname</span>
+						</td>
+			        </tr>
+			        <tr>
+			        	<td><label for="lastname" th:text="#{CreateCustomerLabel_lastname}">Prototype Customer lastname</label></td>
+						<td>
+							<input id="lastname" type="text" required="required" th:field="*{lastname}" th:title="#{CreateCustomerTitle_lastname}"/>
+							<span class="help-block" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Incorrect lastname</span>
+						</td>
+			        </tr>
+			        <tr>
+			        	<td><label for="email" th:text="#{CreateCustomerLabel_email}">Prototype Customer email</label></td>
+						<td>
+							<input id="email" type="text" required="required" th:field="*{email}" th:title="#{CreateCustomerTitle_email}"/>
+							<span class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect email</span>
+						</td>
+			        </tr>
+			        <tr>
+			        	<td><label for="address" th:text="#{CreateCustomerLabel_address}">Prototype Customer address</label></td>
+						<td>
+							<input id="address" type="text" required="required" th:field="*{address}" th:title="#{CreateCustomerTitle_address}"/>
+							<span class="help-block" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Incorrect address</span>
+						</td>
+			        </tr>
+			        <tr>
+			        	<td><label for="city" th:text="#{CreateCustomerLabel_city}">Prototype Customer city</label></td>
+						<td>
+							<input id="city" type="text" required="required" th:field="*{city}" th:title="#{CreateCustomerTitle_city}"/>
+							<span class="help-block" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">Incorrect city</span>
+						</td>
+			        </tr>
+			        <tr>
+			        	<td><label for="password" th:text="#{CreateCustomerLabel_password}">Prototype Customer password</label></td>
+						<td>
+							<input id="password" type="password" required="required" th:field="*{password}" th:title="#{CreateCustomerTitle_password}"/>
+							<span class="help-block" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect password</span>
+						</td>
+			        </tr>
+		        </tbody>
+		    </table>
+			<ul class="commandButtons">
+				<li>
+					<a href="javascript: submitform();"><span th:text="#{CreateCustomerSaveLink}">Prototype Save Link</span></a>
+					
+				</li>
+				<li>
+					<a href="#" th:href="@{/}">Cancel</a>
+				</li>
+             </ul>
+		</form>
+		<script type="text/javascript">
+			function submitform() {
+				document.forms["signup"].submit();
+			}
+		</script>
+	</div>
+	
+</body>
+
+</html>

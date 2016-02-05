@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      lang="en"
+      layout:decorator="layouts/template">
+
+<head>
+    <title th:text="#{CreateCategoryTitle}">Create Category Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link href="../../../../resources/css/default.css"
+          th:href="@{/css/default.css}" rel="stylesheet" />
+          
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../resources/img/logo-small.ico"
+    	th:href="@{/img/logo-small.ico}"/>
+</head>
+<body>
+	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
+	<div layout:fragment="body">
+		<form>
+			<table th:object="${category}">
+		        <tbody>
+			        <tr>
+			        	<td><label for="name" th:text="#{CreateCategoryLabel_name}">Prototype Category name</label></td>
+			        	<td>
+							<input id="name" type="text" th:field="*{name}" th:title="#{CreateCategoryTitle_name}" required="required" />
+							<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</span>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="tags" th:text="#{CreateCategoryLabel_tags}">Prototype Category tags</label></td>
+			        	<td>
+							<input id="tags" type="text" th:field="*{tags}" th:title="#{CreateCategoryTitle_tags}"/>
+						</td>
+			        </tr>
+		        </tbody>
+			</table>
+		</form>
+	</div>
+	
+</body>
+
+</html>
