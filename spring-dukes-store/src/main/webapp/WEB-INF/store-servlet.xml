@@ -13,9 +13,9 @@
   <!--  RESOURCE FOLDERS CONFIGURATION                                  -->
   <!--  Dispatcher configuration for serving static resources           -->
   <!-- **************************************************************** -->
-  <mvc:resources location="/resources/img/" mapping="/img/**" />
-  <mvc:resources location="/resources/css/" mapping="/css/**" />
-  <mvc:resources location="/resources/js/" mapping="/js/**" />
+  <mvc:resources location="classpath:/META-INF/resources/img/" mapping="/img/**" />
+  <mvc:resources location="classpath:/META-INF/resources/css/" mapping="/css/**" />
+  <mvc:resources location="classpath:/META-INF/resources/js/" mapping="/js/**" />
     
    <mvc:view-controller path="/" view-name="welcome" />
    <mvc:view-controller path="/admin/index"/>

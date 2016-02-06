@@ -16,7 +16,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 	<security:http auto-config="true" disable-url-rewriting="true" use-expressions="true">
 		<security:form-login login-page="/signin" login-processing-url="/signinProcess"
 			default-target-url="/signin/success"  authentication-failure-url="/signin?error=1"/>
-		<security:logout logout-url="/logout" />
+		<security:logout logout-url="/logout" logout-success-url="/logout/success"/>
 		<security:remember-me services-ref="rememberMeServices" key="remember-me-key"/>
 		<security:intercept-url pattern="/" access="permitAll" />
         <security:intercept-url pattern="/img/**" access="permitAll" />

@@ -7,6 +7,15 @@
         <dependent-module archiveName="spring-dukes-events-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/spring-dukes-events/spring-dukes-events">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="spring-dukes-entities-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/spring-dukes-entities/spring-dukes-entities">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="spring-dukes-payment-0.0.1-SNAPSHOT.war" deploy-path="/WEB-INF/lib" handle="module:/resource/spring-dukes-payment/spring-dukes-payment">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="spring-dukes-resources-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/spring-dukes-resources/spring-dukes-resources">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module deploy-path="/" handle="module:/overlay/prj/spring-dukes-payment?includes=**/**&amp;excludes=META-INF/MANIFEST.MF">
             <dependency-type>consumes</dependency-type>
         </dependent-module>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.forest.controller.support.MessageHelper;
 import com.forest.entity.Category;
 import com.forest.entity.CustomerOrder;
 import com.forest.entity.Person;
@@ -33,23 +34,16 @@ public class OrderController {
 	
 	@RequestMapping(value = "orders", method = RequestMethod.GET)
     public String findOrders(@AuthenticationPrincipal User activeUser, Model model) {
-		if (activeUser == null){
+		if (activeUser != null){
 			
-			// JsfUtil.addErrorMessage("Current user is not authenticated. Please do login before accessing your orders.");
-			return "welcome";
+			Person person = personService.findUserByEmail(activeUser.getUsername());
+			if (person == null){
+				MessageHelper.addErrorAttribute(model, "Unable to find user by email {0}",activeUser.getUsername());
+				return "welcome";
+			}
+			List<CustomerOrder> customerOrders = orderService.getMyOrders(person.getId());
+			model.addAttribute("myOrders", customerOrders);
 		}
-		Person person = personService.findUserByEmail(activeUser.getUsername());
-		if (person == null){
-			// JsfUtil.addErrorMessage("Current user is not authenticated. Please do login before accessing your orders.");
-			return "welcome";
-		}
-		List<CustomerOrder> customerOrders = orderService.getMyOrders(person.getId());
-		if (customerOrders.isEmpty()){
-//			logger.log(Level.FINEST, "Customer {0} has no orders to display.", user.getEmail());
-			
-		}
-		
-        model.addAttribute("myOrders", customerOrders);
         return "order/myOrders";
     }
 	

@@ -20,6 +20,9 @@
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
 		<form action="/signinProcess" method="post" th:action="@{/signinProcess}" th:if="${#authorization.expression('!isAuthenticated()')}">
+			 <th:block th:if="${param.error != null}">
+		        <div th:replace="fragments/alert :: alert (type='danger', message=#{Login_Failed})">Alert</div>
+		    </th:block>
 			<table>
 		        <tbody>
 		        <tr>

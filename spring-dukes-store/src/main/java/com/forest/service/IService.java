@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaQuery;
 
+import org.hibernate.jpa.spi.AbstractEntityManagerImpl;
 import org.springframework.dao.DataAccessException;
 
 import com.forest.repository.IRepository;

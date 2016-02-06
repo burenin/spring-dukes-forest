@@ -33,9 +33,14 @@
 			Template top header header
         </header>
         <div id="wrapper" class="clearfix">
-        	<br />
+        	<!--/* Handle the flash task */-->
+		    <br />
             <!-- ############## CONTENT ############## -->
             <section id="maincol">
+            	<th:block th:if="${message != null}">
+			        <!--/* The message code is returned from the @Controller */-->
+			        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+			    </th:block>
                 <div layout:fragment="body">
                 	Content
                 </div>

@@ -17,8 +17,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.forest.bean.ShoppingCart;
+import com.forest.controller.support.MessageHelper;
 import com.forest.entity.Customer;
 import com.forest.entity.CustomerOrder;
 import com.forest.entity.OrderDetail;
@@ -33,6 +35,7 @@ import com.forest.service.IOrderService;
 import com.forest.service.IPersonService;
 import com.forest.service.IProductService;
 import com.forest.service.UserService.User;
+
 
 @Controller()
 @RequestMapping(value="/cart")
@@ -77,6 +80,7 @@ public class ShoppingCartController {
         final Integer productId = Integer.valueOf(id);
         Product p = productService.findById(productId);
         cart.addItem(p);
+        LOGGER.info("Adding product {}", p.getName());
         return "redirect:/products/" + p.getCategory().getId();
     }
 	
@@ -88,20 +92,18 @@ public class ShoppingCartController {
 	}
 	
 	@RequestMapping(value="/handle", params= { "checkout" }, method = RequestMethod.POST)
-    public String checkoutCart(@AuthenticationPrincipal User activeUser, final HttpServletRequest req, final Locale locale, final Model model) {
+    public String checkoutCart(@AuthenticationPrincipal User activeUser, final HttpServletRequest req, final Locale locale, final Model model, RedirectAttributes ra) {
 		
 		if (activeUser == null) {
-//            JsfUtil.addErrorMessage(JsfUtil.getStringFromBundle("bundles.Bundle", "LoginBeforeCheckout"));
-
+			MessageHelper.addErrorAttribute(ra, "LoginBeforeCheckout");
         } else {
         	if (activeUser.isAdmin()){
-//        		JsfUtil.addErrorMessage(JsfUtil.getStringFromBundle("bundles.Bundle", "AdministratorNotAllowed"));
-                
+        		MessageHelper.addErrorAttribute(ra, "AdministratorNotAllowed");
         	}else{
         		
         		Person person = personService.findUserByEmail(activeUser.getUsername());
         		if (person == null){
-        			// JsfUtil.addErrorMessage("Current user is not authenticated. Please do login before accessing your orders.");
+        			MessageHelper.addErrorAttribute(ra, "Current user is not authenticated. Please do login before accessing your orders.");
         		}else{
         			Customer customer = customerService.findById(person.getId());
         			CustomerOrder order = new CustomerOrder();
@@ -138,19 +140,13 @@ public class ShoppingCartController {
         			LOGGER.info("{} Sending event from ShoppingCart", Thread.currentThread().getName());
         			eventDispatcherService.publish(event);
         			
-        			String message = messageSource.getMessage("Cart_Checkout_Success", null, locale);
-        			model.addAttribute("successInfo", message);
+        			MessageHelper.addSuccessAttribute(ra, "Cart_Checkout_Success");
         			cart.clear();
         		}
-        		
-        		
-        		
-        		
         	}
-            
-            
         }
-		return "welcome";
+		String referer = req.getHeader("Referer");
+	    return "redirect:"+ referer;
 	}
 	
 	private NewsOrderEvent orderToEvent(CustomerOrder order) {
