@@ -3,7 +3,9 @@ package com.forest.event;
 import java.io.Serializable;
 import java.util.Date;
 
-public class OrderEvent<T> 
+import org.springframework.context.ApplicationEvent;
+
+public class OrderEvent<T> extends ApplicationEvent
 		implements Serializable {
 	
 	private static final long serialVersionUID = -6732499855148123891L;
@@ -13,6 +15,11 @@ public class OrderEvent<T>
     private int customerID;
     private int orderID;
     private int statusID;
+    
+    public OrderEvent(Object source) {
+		super(source);
+	}
+
     
     public int getCustomerID() {
         return customerID;

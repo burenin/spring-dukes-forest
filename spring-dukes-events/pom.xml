@@ -9,6 +9,19 @@
   <groupId>javaeetutorial</groupId>
   <version>0.0.1-SNAPSHOT</version>
   
+  <properties>
+		<spring.version>4.2.3.RELEASE</spring.version>
+  </properties>
+  
+  <dependencies>
+  	<!-- Spring -->
+	<dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-context</artifactId>
+           <version>${spring.version}</version>
+       </dependency>
+  </dependencies>
+  
   <build>
 		<plugins>
 			<plugin>
