@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<body>
+	<div th:fragment="createButtons (controller, bundleEntity)">
+		<ul class="commandButtons">
+             <li>
+             	<a href="javascript: submitform();">
+             		<span th:text="#{${bundleEntity}+'SaveLink'}">Prototype save link</span>
+             	</a>
+             </li>
+             <li>
+             	<a href="/dukes-shipment/admin/index.html" th:href="@{|/admin/${controller}/prepareList|}">
+             		<span th:text="#{${bundleEntity}+'ShowAllLink'}">Prototype Show all link</span>
+             	</a>
+             </li>
+             <li><a href="/dukes-shipment/admin/index.html" th:href="@{/admin/index}">Back</a></li>
+         </ul>
+         
+         <script type="text/javascript">
+			function submitform() {
+				document.forms["create"].submit();
+			}
+		</script>
+	</div>
+</body>
+</html>
+

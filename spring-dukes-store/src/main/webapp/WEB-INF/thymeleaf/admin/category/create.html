@@ -19,8 +19,8 @@
 <body>
 	<!--/* Content of this page will be decorated by the elements of template.html (layouts/template.html) */-->
 	<div layout:fragment="body">
-		<form>
-			<table th:object="${category}">
+		<form id="create" method="post" th:action="@{/admin/category/create}" th:object="${category}">
+			<table>
 		        <tbody>
 			        <tr>
 			        	<td><label for="name" th:text="#{CreateCategoryLabel_name}">Prototype Category name</label></td>
@@ -37,6 +37,8 @@
 			        </tr>
 		        </tbody>
 			</table>
+			
+			<div th:replace="fragments/commandButtons :: createButtons (controller='category', bundleEntity='CreateCategory')">Prototype Create Category</div>
 		</form>
 	</div>
 	
