@@ -8,4 +8,61 @@
   <artifactId>spring-dukes-payment</artifactId>
   <groupId>javaeetutorial</groupId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+  	<!-- Logging -->
+     <logback.version>1.0.9</logback.version>
+     <log4j.version>1.2.17</log4j.version>
+     <slf4j.version>1.7.2</slf4j.version>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spring-dukes-events</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spring-dukes-entities</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spring-dukes-resources</artifactId>
+            <version>${project.version}</version>
+      </dependency>
+      
+      <!-- Logging with SLF4J & LogBack -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+  </dependencies>
 </project>

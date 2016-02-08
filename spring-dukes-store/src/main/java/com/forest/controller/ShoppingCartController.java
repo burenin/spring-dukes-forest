@@ -150,7 +150,7 @@ public class ShoppingCartController {
 	}
 	
 	private NewsOrderEvent orderToEvent(CustomerOrder order) {
-		NewsOrderEvent event = new NewsOrderEvent();
+		NewsOrderEvent event = new NewsOrderEvent(this);
 
         event.setAmount(order.getAmount());
         event.setCustomerID(order.getCustomer().getId());
