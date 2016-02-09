@@ -8,12 +8,15 @@
   <artifactId>spring-dukes-payment</artifactId>
   <groupId>javaeetutorial</groupId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
   
   <properties>
   	<!-- Logging -->
      <logback.version>1.0.9</logback.version>
      <log4j.version>1.2.17</log4j.version>
      <slf4j.version>1.7.2</slf4j.version>
+     
+     <spring.version>4.2.3.RELEASE</spring.version>
   </properties>
   
   <dependencies>
@@ -64,5 +67,26 @@
             <version>${logback.version}</version>
             <scope>runtime</scope>
         </dependency>
+        
+        <!-- Spring -->
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
   </dependencies>
+  
+  <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
