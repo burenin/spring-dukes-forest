@@ -5,11 +5,7 @@
   <display-name>spring-dukes-payment</display-name>
   <description>Spring Dukes Payment + MVC + Thymeleaf</description>
   
-  <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-  
-    <!--
+<!--
 - Servlet that dispatches request to registered handlers (Controller implementations).
 -->
     <servlet>
