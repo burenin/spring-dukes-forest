@@ -5,17 +5,26 @@
   <display-name>spring-dukes-payment</display-name>
   <description>Spring Dukes Payment + MVC + Thymeleaf</description>
   
-<!--
-- Servlet that dispatches request to registered handlers (Controller implementations).
--->
+	<listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+
     <servlet>
-        <servlet-name>remoting</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <servlet-name>SpringApplication</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.forest.payment.services.PaymentApplication</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>remoting</servlet-name>
-        <url-pattern>/remoting/*</url-pattern>
+        <servlet-name>SpringApplication</servlet-name>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 </web-app>
