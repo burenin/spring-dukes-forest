@@ -25,6 +25,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringApplication</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/payment/*</url-pattern>
     </servlet-mapping>
 </web-app>
