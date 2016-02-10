@@ -84,6 +84,14 @@
   
   <bean id="validator"
     class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    
+    
+	<bean id="applicationEventMulticaster"
+	      class="org.springframework.context.event.SimpleApplicationEventMulticaster">
+	    <property name="taskExecutor">
+	    	<bean class="org.springframework.core.task.SimpleAsyncTaskExecutor"/>
+	    </property>
+	</bean>    
 </beans>
 
 
