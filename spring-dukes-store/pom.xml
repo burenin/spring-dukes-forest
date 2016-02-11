@@ -192,10 +192,11 @@
 			<version>2.1.2.RELEASE</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>1.19</version>
+		<!-- Jersey -->
+        <dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet-core</artifactId>
+			<version>2.22.1</version>
 		</dependency>
         
 	</dependencies>

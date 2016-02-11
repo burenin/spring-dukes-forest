@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
-import com.forest.event.NewsOrderEvent;
+import com.forest.event.OrderEvent;
 
 @Service
 public class EventDispatcherService {
@@ -14,10 +14,7 @@ public class EventDispatcherService {
 	@Autowired
 	private ApplicationEventPublisher 			publisher;
 	
-	// @Asynchronious
-	public void publish(NewsOrderEvent event){
+	public void publish(OrderEvent<?> event){
 		publisher.publishEvent(event);
 	}
-	
-	
 }

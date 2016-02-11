@@ -6,4 +6,6 @@ import com.forest.entity.CustomerOrder;
 
 public interface IOrderService extends IService<CustomerOrder> {
 	List<CustomerOrder> getMyOrders(Integer id);
+	
+	void setOrderStatus(int orderId, int newStatus);
 }

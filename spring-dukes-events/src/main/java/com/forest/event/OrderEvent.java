@@ -3,14 +3,9 @@ package com.forest.event;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.springframework.context.ApplicationEvent;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class OrderEvent<T> extends ApplicationEvent
 		implements Serializable {
 	
@@ -22,8 +17,21 @@ public class OrderEvent<T> extends ApplicationEvent
     private int orderID;
     private int statusID;
     
+    public OrderEvent() {
+		super("Order Event");
+	}
+    
     public OrderEvent(Object source) {
 		super(source);
+	}
+    
+    public OrderEvent(Object source, OrderEvent<?> orderEvent){
+    	super(source);
+    	this.amount = orderEvent.amount;
+    	this.dateCreated = orderEvent.dateCreated;
+    	this.customerID = orderEvent.customerID;
+    	this.orderID = orderEvent.orderID;
+    	this.statusID = orderEvent.statusID;
 	}
 
     

@@ -11,8 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.forest.event.OrderEvent;
-
 @Path("/pay")
 @Component
 public class PaymentService {
@@ -21,7 +19,7 @@ public class PaymentService {
 
 	@POST
     @Consumes("application/xml")
-	public Response processPayment(OrderEvent<?> order) {
+	public Response processPayment(XmlOrderEvent order) {
 		LOGGER.info("Amount: "+order.getAmount());
 		if (order.getAmount() < 1000) {
 			return Response.ok().build();
