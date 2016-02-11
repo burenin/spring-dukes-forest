@@ -39,6 +39,9 @@
     -->
     
 <!--     <jdbc:script location="${jdbc.dropLocation}"/> -->
-    <jdbc:embedded-database id="dataSource" type="HSQL" database-name="FOREST"/>
-
+    <jdbc:embedded-database id="dataSource" type="HSQL" database-name="FOREST">
+        
+        <jdbc:script location="${jdbc.initLocation}"/>
+        <jdbc:script location="${jdbc.dataLocation}"/>
+    </jdbc:embedded-database>
 </beans>
