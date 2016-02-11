@@ -6,20 +6,23 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>spring-dukes-shipment</artifactId>
-  <groupId>javaeetutorial</groupId>
-  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
   
-  <build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+  <dependencies>
+  	<dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spring-dukes-events</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spring-dukes-entities</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spring-dukes-resources</artifactId>
+            <version>${project.version}</version>
+      </dependency>
+  </dependencies>
 </project>
