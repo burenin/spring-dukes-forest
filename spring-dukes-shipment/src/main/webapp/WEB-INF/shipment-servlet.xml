@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+  <!-- **************************************************************** -->
+  <!--  RESOURCE FOLDERS CONFIGURATION                                  -->
+  <!--  Dispatcher configuration for serving static resources           -->
+  <!-- **************************************************************** -->
+  <mvc:resources location="classpath:/META-INF/resources/img/" mapping="/img/**" />
+  <mvc:resources location="classpath:/META-INF/resources/css/" mapping="/css/**" />
+  <mvc:resources location="classpath:/META-INF/resources/js/" mapping="/js/**" />
+    
+   <mvc:view-controller path="/" view-name="welcome" />
+   <mvc:view-controller path="/admin/index"/>
+
+  <!-- **************************************************************** -->
+  <!--  SPRING ANNOTATION PROCESSING                                    -->
+  <!-- **************************************************************** -->
+  <mvc:annotation-driven>
+  	<mvc:argument-resolvers>
+        <bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver"/>
+    </mvc:argument-resolvers>
+  </mvc:annotation-driven>
+  <context:component-scan base-package="com.forest.controller" />
+
+
+  <!-- **************************************************************** -->
+  <!--  MESSAGE EXTERNALIZATION/INTERNATIONALIZATION                    -->
+  <!--  Standard Spring MessageSource implementation                    -->
+  <!-- **************************************************************** -->
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basename" value="bundles/Bundle" />
+  </bean>
+  
+  <!-- **************************************************************** -->
+  <!--  CONVERSION SERVICE                                              -->
+  <!--  Standard Spring formatting-enabled implementation               -->
+  <!-- **************************************************************** -->
+  <!-- <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    <property name="formatters">
+      <set>
+        <bean class="com.forest.conversion.DateFormatter" />
+      </set>
+    </property>
+  </bean> -->
+
+
+  <!-- **************************************************************** -->
+  <!--  THYMELEAF-SPECIFIC ARTIFACTS                                    -->
+  <!--  TemplateResolver <- TemplateEngine <- ViewResolver              -->
+  <!-- **************************************************************** -->
+
+  <bean id="templateResolver"
+        class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+    <property name="prefix" value="/WEB-INF/thymeleaf/" />
+    <property name="suffix" value=".html" />
+    <property name="templateMode" value="HTML5" />
+    <!-- Template cache is true by default. Set to false if you want -->
+    <!-- templates to be automatically updated when modified.        -->
+    <property name="cacheable" value="false" />
+  </bean>
+    
+  <bean id="templateEngine"
+        class="org.thymeleaf.spring4.SpringTemplateEngine">
+    <property name="templateResolver" ref="templateResolver" />
+    <property name="additionalDialects">
+      <set>
+        <bean class="nz.net.ultraq.thymeleaf.LayoutDialect" />
+        <bean class="org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect" />
+      </set>
+    </property>
+  </bean>
+   
+  <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+    <property name="templateEngine" ref="templateEngine" />
+  </bean>  
+  
+  <bean id="validator"
+    class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    
+    
+	<bean id="applicationEventMulticaster"
+	      class="org.springframework.context.event.SimpleApplicationEventMulticaster">
+	    <property name="taskExecutor">
+	    	<bean class="org.springframework.core.task.SimpleAsyncTaskExecutor"/>
+	    </property>
+	</bean>    
+</beans>
+
+

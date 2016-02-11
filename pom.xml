@@ -11,6 +11,8 @@
   	<module>spring-dukes-shipment</module>
   	<module>spring-dukes-entities</module>
   	<module>spring-dukes-events</module>
+  	<module>spring-dukes-security</module>
+  	<module>spring-dukes-services</module>
   </modules>
   
   

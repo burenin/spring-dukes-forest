@@ -13,26 +13,9 @@
 	<dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>spring-dukes-events</artifactId>
+            <artifactId>spring-dukes-services</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>spring-dukes-entities</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>spring-dukes-payment</artifactId>
-            <version>${project.version}</version>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>spring-dukes-resources</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        
 	</dependencies>
 	
 </project>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      lang="en">
+<head>
+
+    <title layout:title-pattern="$DECORATOR_TITLE $CONTENT_TITLE" th:text="#{PageTitleShipment}">Prototype Shipment Head Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    
+          
+          
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/css/bootstrap.min.css}"/>
+    
+    <link href="../../../resources/css/default.css"
+          th:href="@{/css/default.css}" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>    
+    
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>  
+    <script src="../../../resources/js/util.js" th:src="@{/js/util.js}"></script>  
+          
+    <link rel="shortcut icon" type="image/x-icon" href="../../../resources/img/logo-small.ico"
+    	th:href="@{/img/logo-small.ico}"/>
+</head>
+<body>
+	<div id="topbar" th:replace="fragments/bodyHeader :: authHeader">
+		auth header
+	</div>
+	
+	<div id="pagewidth">
+		<!-- ############## header ############## -->
+        <header id="header" th:replace="fragments/bodyHeader :: topHeader">
+			Template top header header
+        </header>
+        <div id="wrapper" class="clearfix">
+        	<!--/* Handle the flash task */-->
+		    <br />
+            <!-- ############## CONTENT ############## -->
+            <section id="maincol-ship">
+            	<th:block th:if="${message != null}">
+			        <!--/* The message code is returned from the @Controller */-->
+			        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+			    </th:block>
+                <div layout:fragment="body">
+                	Content
+                </div>
+            </section>
+        </div>
+	</div>
+</body>
+</html>
